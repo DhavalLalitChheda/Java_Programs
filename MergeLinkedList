@@ -1,0 +1,29 @@
+class MergeLinkedList{
+	public class LinkedList{
+		int val;
+		LinkedList next;
+		LinkedList(int x){
+			val = x;
+		}
+	}
+	public static void main(String args[]){
+
+	}
+	public LinkedList mergeLinkedLists(LinkedList l1, LinkedList l2){
+		if(l1 == null){
+			return l2;
+		}
+		if(l2 == null){
+			return l1;
+		}
+		LinkedList merged;
+		if(l1.val < l2.val){
+			merged = l1;
+			merged.next = mergeLinkedLists(l1.next, l2);
+		} else {
+			merged = l2;
+			merged.next = mergeLinkedLists(l1, l2.next);
+		}
+		return merged;
+	}
+}
